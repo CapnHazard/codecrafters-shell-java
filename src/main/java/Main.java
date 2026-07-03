@@ -6,7 +6,7 @@ public class Main {
         System.out.print("$ ");
         String command = sc.nextLine();
         if(command != null) {
-            System.out.print("{"+command+"}: command not found");
+            System.out.print(command+": command not found");
         }
         sc.close();
     }
