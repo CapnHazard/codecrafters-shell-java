@@ -13,7 +13,8 @@ public class Main {
                 System.out.print(command+": command not found\n");
             }
             if(command.startsWith("echo")) {
-                System.out.println(command.subSequence(4, command.length()));
+                System.out.println(command.substring(4, command.length()).strip());
+                
             }
         }
         sc.close();
