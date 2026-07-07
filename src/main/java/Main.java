@@ -9,19 +9,14 @@ public class Main {
             String command = sc.nextLine();
             if(command.equals("exit")) {
                 break;
-            } else if(command != null) {
+            } else if(command != "exit" && !command.startsWith("echo")) {
                 System.out.print(command+": command not found\n");
+            }
+            if(command.startsWith("echo")) {
+                System.out.println(command.subSequence(4, command.length()));
             }
         }
         sc.close();
     }
 }
 
-/*
-
-            if(command != "exit") {
-                System.out.print(command+": command not found\n");
-            } else if(command.equals("exit")) {
-                break;
-            }
-*/
