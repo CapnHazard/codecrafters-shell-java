@@ -17,11 +17,11 @@ public class Main {
             }
             if(command.startsWith("type")) {
                 if(command.startsWith("echo", 5)) {
-                    System.out.println("echo is a shell built-in");
+                    System.out.println("echo is a shell builtin");
                 } else if(command.startsWith("exit", 5)) {
-                    System.out.println("exit is a shell built-in");
+                    System.out.println("exit is a shell builtin");
                 } else if(command.startsWith("type")) {
-                    System.out.println("type is a shell built-in");
+                    System.out.println("type is a shell builtin");
                 } else {
                     System.out.println("<" + command.substring(5) + ">: not found");
                 }
