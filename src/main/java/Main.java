@@ -30,7 +30,7 @@ public class Main {
                 if(resolvedPath != null) {
                     System.out.println(resolvedPath);
                 } else {
-                    System.out.println(input + ": not found");
+                    System.out.println(input + " is " + resolvedPath);
                 }
             }
         }
@@ -44,7 +44,7 @@ public class Main {
         for(String x : dirs) {
             File candidate = new File(x, command);
             if(candidate.isFile() && candidate.canExecute()) {
-                return command + " is " +candidate.getAbsolutePath();
+                return candidate.getAbsolutePath();
             }
         }
         return null;
