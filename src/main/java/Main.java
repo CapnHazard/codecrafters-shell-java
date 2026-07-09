@@ -30,7 +30,7 @@ public class Main {
                 if(resolvedPath != null) {
                     System.out.println(resolvedPath);
                 } else {
-                    System.out.println(input + " is " + resolvedPath);
+                    System.out.println(input + ": not found");
                 }
             }
         }
