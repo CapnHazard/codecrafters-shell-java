@@ -44,7 +44,7 @@ public class Main {
         for(String x : dirs) {
             File candidate = new File(x, command);
             if(candidate.isFile() && candidate.canExecute()) {
-                return candidate.getAbsolutePath();
+                return command + " is " +candidate.getAbsolutePath();
             }
         }
         return null;
