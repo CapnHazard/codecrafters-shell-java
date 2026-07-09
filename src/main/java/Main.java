@@ -23,7 +23,7 @@ public class Main {
                 } else if(rest.equals("type")) {
                     System.out.println("type is a shell builtin");
                 } else {
-                    System.out.println(rest + " is " + findInPath(command));
+                    System.out.println(rest + " is " + findInPath(rest));
                 }
             } else {
                 String resolvedPath = findInPath(rest);
