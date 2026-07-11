@@ -31,11 +31,12 @@ public class Main {
                     }
                 }
             } else {
-                String resolvedPath = findInPath(rest);
+                String resolvedPath = findInPath(command);
                 if(resolvedPath != null) {
-                    System.out.println(input + " is " + resolvedPath);
+                    //System.out.println(input + " is " + resolvedPath);
+                    runExternal(command, rest, resolvedPath);
                 } else {
-                    System.out.println(input + ": not found");
+                    System.out.println(command + ": not found");
                 }
             }
         }
@@ -54,9 +55,9 @@ public class Main {
         }
         return null;
     }
-    static void runExternal(String command, String rest) throws Exception {
+    static void runExternal(String command, String rest, String resolvedPath) throws Exception {
         List<String> commandParts = new ArrayList<>();
-        commandParts.add(command);
+        commandParts.add(0, resolvedPath); 
         if(!rest.isEmpty()) {
             commandParts.addAll(Arrays.asList(rest.split(" ")));
         }
