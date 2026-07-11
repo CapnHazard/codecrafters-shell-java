@@ -58,7 +58,6 @@ public class Main {
     static void runExternal(String command, String rest, String resolvedPath) throws Exception {
         List<String> commandParts = new ArrayList<>();
         commandParts.add(0, command);
-        commandParts.add(resolvedPath); 
         if(!rest.isEmpty()) {
             commandParts.addAll(Arrays.asList(rest.split(" ")));
         }
