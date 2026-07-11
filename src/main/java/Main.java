@@ -25,9 +25,9 @@ public class Main {
                 } else {
                     String resolvedPath = findInPath(rest);
                     if(resolvedPath != null) {
-                        System.out.println(resolvedPath);
+                        System.out.println(rest + " is " + resolvedPath);
                     } else {
-                        System.out.println(input + " is " + resolvedPath);
+                        System.out.println(input + ": not found");
                     }
                 }
             } else {
