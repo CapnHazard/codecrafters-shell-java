@@ -1,9 +1,12 @@
 import java.io.File;
 import java.util.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in); 
+        String currentDirectory = System.getProperty("user.dir");
         while(true) {
             System.out.print("$ ");
             String input = sc.nextLine();
@@ -30,10 +33,11 @@ public class Main {
                         System.out.println(rest + ": not found");
                     }
                 }
+            } else if (command.equals("pwd")) {
+                System.out.println(currentDirectory);
             } else {
                 String resolvedPath = findInPath(command);
                 if(resolvedPath != null) {
-                    //System.out.println(input + " is " + resolvedPath);
                     runExternal(command, rest, resolvedPath);
                 } else {
                     System.out.println(command + ": not found");
