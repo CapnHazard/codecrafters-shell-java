@@ -27,6 +27,8 @@ public class Main {
                     System.out.println("type is a shell builtin");
                 } else if(rest.equals("pwd")) {
                     System.out.println("pwd is a shell builtin");
+                } else if(rest.equals("cd")) {
+                    System.out.println("cd is a shell builtin");
                 } else {
                     String resolvedPath = findInPath(rest);
                     if(resolvedPath != null) {
@@ -37,6 +39,13 @@ public class Main {
                 }
             } else if (command.equals("pwd")) {
                 System.out.println(currentDirectory);
+            } else if(command.equals("cd")) {
+                File dir = new File(rest);
+                if(dir.isDirectory()) {
+                    currentDirectory = dir.toString();
+                } else {
+                    System.out.println("cd: " + dir + ": No such file or directory" );
+                }
             } else {
                 String resolvedPath = findInPath(command);
                 if(resolvedPath != null) {
