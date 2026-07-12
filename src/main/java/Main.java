@@ -40,9 +40,10 @@ public class Main {
             } else if (command.equals("pwd")) {
                 System.out.println(currentDirectory);
             } else if(command.equals("cd")) {
-                File dir = new File(rest);
+                File dir = new File(currentDirectory, rest);
+                Path x = dir.toPath().normalize();
                 if(dir.isDirectory()) {
-                    currentDirectory = dir.toString();
+                    currentDirectory = x.toString();
                 } else {
                     System.out.println("cd: " + dir + ": No such file or directory" );
                 }
