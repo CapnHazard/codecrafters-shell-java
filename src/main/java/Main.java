@@ -25,6 +25,8 @@ public class Main {
                     System.out.println("exit is a shell builtin");
                 } else if(rest.equals("type")) {
                     System.out.println("type is a shell builtin");
+                } else if(rest.equals("pwd")) {
+                    System.out.println("pwd is a shell builtin");
                 } else {
                     String resolvedPath = findInPath(rest);
                     if(resolvedPath != null) {
