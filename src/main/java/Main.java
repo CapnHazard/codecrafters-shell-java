@@ -13,6 +13,10 @@ public class Main {
             String [] parts = input.split(" ", 2);
             String command = parts[0];
             String rest = parts.length > 1 ? parts[1].strip() : "";
+            
+            if(rest.startsWith("~")) {
+                rest = System.getProperty("user.home") + rest.substring(1);
+            }
 
             if(command.equals("exit")) {
                 break;
@@ -40,12 +44,16 @@ public class Main {
             } else if (command.equals("pwd")) {
                 System.out.println(currentDirectory);
             } else if(command.equals("cd")) {
-                File dir = new File(currentDirectory, rest);
-                Path x = dir.toPath().normalize();
-                if(dir.isDirectory()) {
-                    currentDirectory = x.toString();
+                if(rest.isEmpty()) {
+                    currentDirectory = System.getProperty("user.home");
                 } else {
-                    System.out.println("cd: " + dir + ": No such file or directory" );
+                    File dir = new File(currentDirectory, rest);
+                    Path x = dir.toPath().normalize();
+                    if(dir.isDirectory()) {
+                        currentDirectory = x.toString();
+                    } else {
+                        System.out.println("cd: " + dir + ": No such file or directory" );
+                    }
                 }
             } else {
                 String resolvedPath = findInPath(command);
