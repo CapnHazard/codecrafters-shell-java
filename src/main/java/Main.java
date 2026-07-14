@@ -47,7 +47,12 @@ public class Main {
                 if(rest.isEmpty()) {
                     currentDirectory = System.getProperty("user.home");
                 } else {
-                    File dir = new File(currentDirectory, rest);
+                    File dir;
+                    if(new File(rest).isAbsolute()) {
+                        dir = new File(rest);
+                    } else {
+                        dir = new File(currentDirectory, rest);
+                    }
                     Path x = dir.toPath().normalize();
                     if(dir.isDirectory()) {
                         currentDirectory = x.toString();
