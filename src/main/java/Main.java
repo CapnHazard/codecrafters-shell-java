@@ -50,6 +50,8 @@ public class Main {
                     File dir;
                     if(new File(rest).isAbsolute()) {
                         dir = new File(rest);
+                    } else if(rest.equals("~")) {
+                        System.out.println(currentDirectory);
                     } else {
                         dir = new File(currentDirectory, rest);
                     }
