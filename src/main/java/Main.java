@@ -51,7 +51,7 @@ public class Main {
                     if(new File(rest).isAbsolute()) {
                         dir = new File(rest);
                     } else if(rest.equals("~")) {
-                        currentDirectory = System.getProperty("user.home");
+                        currentDirectory = System.getProperty("user.dir");
                     } else {
                         dir = new File(currentDirectory, rest);
                     }
