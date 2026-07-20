@@ -14,6 +14,10 @@ public class Main {
             String command = parts[0];
             String rest = parts.length > 1 ? parts[1].strip() : "";
 
+            if(rest.startsWith("~")) {
+                rest = System.getProperty("user.home") + rest.substring(1);
+            }
+
             if(command.equals("exit")) {
                 break;
             } else if(command.equals("echo")) {
