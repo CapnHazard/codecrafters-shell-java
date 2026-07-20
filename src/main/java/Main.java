@@ -13,10 +13,6 @@ public class Main {
             String [] parts = input.split(" ", 2);
             String command = parts[0];
             String rest = parts.length > 1 ? parts[1].strip() : "";
-            
-            if(rest.startsWith("~")) {
-                rest = System.getProperty("user.home") + rest.substring(1);
-            }
 
             if(command.equals("exit")) {
                 break;
@@ -50,10 +46,6 @@ public class Main {
                     File dir = null;
                     if(new File(rest).isAbsolute()) {
                         dir = new File(rest);
-                    } else if(rest.equals("~")) {
-                        String HOME = System.getProperty("user.home");
-                        currentDirectory = HOME;
-                        System.out.println(currentDirectory);
                     } else {
                         dir = new File(currentDirectory, rest);
                     }
