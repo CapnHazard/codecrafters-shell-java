@@ -15,9 +15,8 @@ public class Main {
             String rest = parts.length > 1 ? parts[1].strip() : "";
 
             if(rest.startsWith("~")) {
-                rest = System.getProperty("user.home") + rest.substring(1);
+                rest = System.getenv("HOME") + rest.substring(1);
             }
-
             if(command.equals("exit")) {
                 break;
             } else if(command.equals("echo")) {
@@ -45,7 +44,7 @@ public class Main {
                 System.out.println(currentDirectory);
             } else if(command.equals("cd")) {
                 if(rest.isEmpty()) {
-                    currentDirectory = System.getProperty("user.home");
+                    currentDirectory = System.getenv("HOME");
                 } else {
                     File dir = null;
                     if(new File(rest).isAbsolute()) {
