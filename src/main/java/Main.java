@@ -29,6 +29,7 @@ public class Main {
                     }
                     System.out.println();
                 } else {
+                    rest = rest.strip().replaceAll("\\s+", " ");
                     System.out.println(rest);
                 }
             } else if(command.equals("type")) {
