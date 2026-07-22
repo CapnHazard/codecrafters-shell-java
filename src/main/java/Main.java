@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.*;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -20,7 +20,17 @@ public class Main {
             if(command.equals("exit")) {
                 break;
             } else if(command.equals("echo")) {
-                System.out.println(rest);
+                if(rest.contains("'")) {
+                    for(char x : rest.toCharArray()) {
+                        if(x == '\'') {
+                            continue;
+                        }
+                        System.out.print(x);
+                    }
+                    System.out.println();
+                } else {
+                    System.out.println(rest);
+                }
             } else if(command.equals("type")) {
                 if(rest.equals("echo")) {
                     System.out.println("echo is a shell builtin");
