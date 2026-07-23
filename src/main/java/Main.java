@@ -86,7 +86,7 @@ public class Main {
             } else {
                 String resolvedPath = findInPath(command);
                 if(resolvedPath != null) {
-                    runExternal(command, rest, resolvedPath);
+                    runExternal(command, tokens, resolvedPath);
                 } else {
                     System.out.println(command + ": not found");
                 }
@@ -107,11 +107,11 @@ public class Main {
         }
         return null;
     }
-    static void runExternal(String command, String rest, String resolvedPath) throws Exception {
+    static void runExternal(String command, List <String> tokens, String resolvedPath) throws Exception {
         List<String> commandParts = new ArrayList<>();
         commandParts.add(0, command);
-        if(!rest.isEmpty()) {
-            commandParts.addAll(Arrays.asList(rest.split(" ")));
+        if(!tokens.isEmpty()) {
+            commandParts.addAll(tokens);
         }
 
         ProcessBuilder pb = new ProcessBuilder(commandParts);
