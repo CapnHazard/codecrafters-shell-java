@@ -7,12 +7,36 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in); 
         String currentDirectory = System.getProperty("user.dir");
+
+        //vars for quoting implementation
+        StringBuilder token = new StringBuilder();
+        boolean singleQuotes = false;
+        List <String> tokens = new ArrayList<>();
+
         while(true) {
             System.out.print("$ ");
             String input = sc.nextLine();
             String [] parts = input.split(" ", 2);
             String command = parts[0];
             String rest = parts.length > 1 ? parts[1].strip() : "";
+            
+            for(char x : rest.toCharArray()) {
+                if(x == '\'') {
+                    singleQuotes = !singleQuotes; //turns true when inside '' and false when outside ''
+                    continue; //to avoid printing single quote char itself
+                } 
+                if(x != ' ' || singleQuotes) {
+                    token.append(x);
+                } else {
+                    if(token.length() > 0) {
+                        tokens.add(token.toString());
+                        token.setLength(0);
+                    }
+                }
+            }
+            if(token.length() > 0) {
+                tokens.add(token.toString());
+            }
 
             if(rest.startsWith("~")) {
                 rest = System.getenv("HOME") + rest.substring(1);
@@ -20,18 +44,7 @@ public class Main {
             if(command.equals("exit")) {
                 break;
             } else if(command.equals("echo")) {
-                if(rest.contains("'")) {
-                    for(char x : rest.toCharArray()) {
-                        if(x == '\'') {
-                            continue;
-                        }
-                        System.out.print(x);
-                    }
-                    System.out.println();
-                } else {
-                    rest = rest.strip().replaceAll("\\s+", " ");
-                    System.out.println(rest);
-                }
+                System.out.println(rest);
             } else if(command.equals("type")) {
                 if(rest.equals("echo")) {
                     System.out.println("echo is a shell builtin");
@@ -107,4 +120,3 @@ public class Main {
         process.waitFor();
     }
 }
-
