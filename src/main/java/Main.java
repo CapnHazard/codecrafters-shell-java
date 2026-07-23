@@ -8,17 +8,17 @@ public class Main {
         Scanner sc = new Scanner(System.in); 
         String currentDirectory = System.getProperty("user.dir");
 
-        //vars for quoting implementation
-        StringBuilder token = new StringBuilder();
-        boolean singleQuotes = false;
-        List <String> tokens = new ArrayList<>();
-
         while(true) {
             System.out.print("$ ");
             String input = sc.nextLine();
             String [] parts = input.split(" ", 2);
             String command = parts[0];
             String rest = parts.length > 1 ? parts[1].strip() : "";
+
+            //vars for quoting implementation
+            StringBuilder token = new StringBuilder();
+            boolean singleQuotes = false;
+            List <String> tokens = new ArrayList<>();
             
             for(char x : rest.toCharArray()) {
                 if(x == '\'') {
