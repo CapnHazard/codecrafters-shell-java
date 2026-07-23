@@ -44,7 +44,7 @@ public class Main {
             if(command.equals("exit")) {
                 break;
             } else if(command.equals("echo")) {
-                System.out.println(rest);
+                System.out.println(String.join(" ", tokens));
             } else if(command.equals("type")) {
                 if(rest.equals("echo")) {
                     System.out.println("echo is a shell builtin");
